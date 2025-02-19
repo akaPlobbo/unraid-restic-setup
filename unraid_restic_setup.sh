@@ -2,37 +2,51 @@
 # Unraid Restic Interactive Installation & Auto-Persistence Setup
 # This script installs Restic on Unraid and ensures it persists after a reboot
 
-# Function to display messages in a user-friendly way
+# Function to display messages in a stylish format
 echo_info() {
-    echo -e "\e[1;34m[INFO]\e[0m $1"
+    echo -e "\e[1;34m[ℹ️ INFO]\e[0m $1"
 }
 echo_success() {
-    echo -e "\e[1;32m[SUCCESS]\e[0m $1"
+    echo -e "\e[1;32m[✅ SUCCESS]\e[0m $1"
 }
 echo_warning() {
-    echo -e "\e[1;33m[WARNING]\e[0m $1"
+    echo -e "\e[1;33m[⚠️ WARNING]\e[0m $1"
 }
 echo_error() {
-    echo -e "\e[1;31m[ERROR]\e[0m $1"
+    echo -e "\e[1;31m[❌ ERROR]\e[0m $1"
 }
 
+# Display a custom Restic logo
+echo -e "\e[1;36m"
+echo "====================================="
+echo " 🚀 Restic Unraid Setup Script 🚀 "
+echo "====================================="
+echo -e "\e[0m"
+
 # Welcome message
-echo_info "Welcome to the Restic Installation Script for Unraid!"
+echo_info "\e[1;35m***********************************\e[0m"
+echo_info "\e[1;35m*   Welcome to Restic Installer  *\e[0m"
+echo_info "\e[1;35m*   for Unraid - Easy & Secure   *\e[0m"
+echo_info "\e[1;35m***********************************\e[0m"
 echo_info "This script will install Restic and ensure it remains available after a reboot."
 
-echo "Where would you like to store the Restic binary? [Default: /boot/config/plugins/restic/bin]"
+# Prompt for binary storage location
+echo -e "\e[1;36m📁 Where would you like to store the Restic binary?\e[0m"
+echo -e "\e[1;33m(Default: /boot/config/plugins/restic/bin)\e[0m"
 read -r PERSISTENT_DIR
 PERSISTENT_DIR=${PERSISTENT_DIR:-/boot/config/plugins/restic/bin}
 
-echo "The default installation directory is /usr/local/bin/restic. Do you really want to change it? Proceed with caution! (y/N)"
+# Prompt for installation path
+echo -e "\e[1;36m🛠️ The default installation directory is /usr/local/bin/restic.\e[0m"
+echo -e "\e[1;33mDo you really want to change it? Proceed with caution! (y/N)\e[0m"
 read -r confirm
 if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
     INSTALL_PATH="/usr/local/bin/restic"
 else
-    echo "Please enter the desired installation directory:"
+    echo -e "\e[1;36m📌 Please enter the desired installation directory:\e[0m"
     read -r INSTALL_PATH
 fi
-INSTALL_PATH=${INSTALL_PATH:-/usr/local/bin/restic}
+INSTALL_PATH=${INSTALL_PATH:-/usr/local/bin/}
 
 # Ensure the persistent directory exists
 echo_info "Creating persistent directory: $PERSISTENT_DIR"
@@ -80,3 +94,12 @@ fi
 
 echo_success "Installation complete! Checking installation:"
 restic version
+
+# Cool farewell sequence
+echo -e "\e[1;36m"
+echo "====================================="
+echo " 🎉 Restic is ready! 🎉 "
+echo "💾 Your backups are in safe hands! 💾"
+echo "🚀 Happy Backing Up & Stay Secure! 🚀"
+echo "====================================="
+echo -e "\e[0m"
