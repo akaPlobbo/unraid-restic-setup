@@ -51,7 +51,7 @@ echo_info "Systemarchitektur erkannt: $ARCH"
 
 # Download and extract the latest Restic binary
 echo_info "Herunterladen von Restic Version $RESTIC_VERSION für Architektur $ARCH..."
-wget -O "$PERSISTENT_DIR/restic.bz2" "https://github.com/restic/restic/releases/download/$RESTIC_VERSION/restic_${ARCH}_linux.bz2"
+wget -O "$PERSISTENT_DIR/restic.bz2" "https://github.com/restic/restic/releases/download/$RESTIC_VERSION/restic_${RESTIC_VERSION}_linux_${ARCH}.bz2"
 if [ $? -eq 0 ]; then
     echo_success "Download erfolgreich. Entpacken der Datei..."
     bzip2 -df "$PERSISTENT_DIR/restic.bz2"
