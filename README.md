@@ -25,7 +25,7 @@ This script installs Restic on Unraid and ensures it remains available after a r
 
 2. Run the script:
     ```bash
-    ./unraid_restic_setup.sh
+    sh unraid_restic_setup.sh
     ```
 
 ## Usage
