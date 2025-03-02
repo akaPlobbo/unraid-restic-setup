@@ -23,12 +23,7 @@ This script installs Restic on Unraid and ensures it remains available after a r
     cd unraid-restic-setup
     ```
 
-2. Make the script executable:
-    ```bash
-    chmod +x unraid_restic_setup.sh
-    ```
-
-3. Run the script:
+2. Run the script:
     ```bash
     ./unraid_restic_setup.sh
     ```
