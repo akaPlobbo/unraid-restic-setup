@@ -95,6 +95,17 @@ fi
 echo_success "Installation complete! Checking installation:"
 restic version
 
+# Enable Bash Completion for Restic
+echo_info "Generating and enabling Restic Bash completion..."
+restic generate --bash-completion /etc/bash_completion.d/restic
+source /etc/bash_completion.d/restic
+echo_success "Bash completion for Restic enabled."
+
+# Persist Bash Completion in .bashrc
+echo_info "Ensuring Bash completion is sourced on login..."
+echo "source /etc/bash_completion.d/restic" >> ~/.bashrc
+echo_success "Restic Bash completion added to ~/.bashrc."
+
 # Cool farewell sequence
 echo -e "\e[1;36m"
 echo "====================================="
